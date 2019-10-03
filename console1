@@ -1,0 +1,133 @@
+abc
+(5) [23, 45, 67, 17, 82]
+abc.reduce((acc,curr)=>{
+	acc +=curr;
+},0);
+undefined
+console.log(acc);
+VM1302:1 Uncaught ReferenceError: acc is not defined
+    at <anonymous>:1:13
+(anonymous) @ VM1302:1
+var sum = abc.reduce((acc,curr)=>{
+	acc +=curr;
+},0);
+undefined
+sum
+undefined
+var sum = abc.reduce((acc,curr)=>{
+	return acc +=curr;
+},0);
+undefined
+sum
+234
+var sum = abc.reduce((acc,curr)=>acc +=curr,0);
+undefined
+sum
+234
+var sum = abc.reduce((acc,curr)=>acc +=curr);
+undefined
+sum
+234
+abc.map((element)=>{
+	return element+2;
+});
+(5) [25, 47, 69, 19, 84]
+abc.map((element)=>{
+	return element**2;
+});
+(5) [529, 2025, 4489, 289, 6724]
+var mapping = abc.map((element)=>{
+	return element**2;
+});
+undefined
+mapping
+(5) [529, 2025, 4489, 289, 6724]
+typeof mapping
+"object"
+arr
+[]
+arr.push(12);
+1
+arr.push(13);
+2
+arr.push(114);
+3
+arr
+(3) [12, 13, 114]
+var l = arr.map((ele)=>ele+2);
+undefined
+l
+(3) [14, 15, 116]
+arr
+(3) [12, 13, 114]
+abc.forEach((ele)=>{
+	console.log(ele);
+});
+VM1953:2 23
+VM1953:2 45
+VM1953:2 67
+VM1953:2 17
+VM1953:2 82
+undefined
+abc.forEach((ele)=>console.log(ele));
+VM1979:1 23
+VM1979:1 45
+VM1979:1 67
+VM1979:1 17
+VM1979:1 82
+undefined
+function add(){
+	console.log('add function');
+}
+undefined
+add();
+VM2074:2 add function
+undefined
+var h = new add();
+VM2074:2 add function
+undefined
+typeof h
+"object"
+function add(a,b){
+	this.a = a;
+	this.b = b;
+}
+undefined
+var h = new add(23,'brain');
+undefined
+typeof h
+"object"
+h
+add {a: 23, b: "brain"}a: 23b: "brain"__proto__: Object
+h.a
+23
+h["a"]
+23
+class add{
+	constructor(a,b){
+		this.a = a;
+		this.b = b;
+	}
+}
+VM2480:1 Uncaught SyntaxError: Identifier 'add' has already been declared
+    at <anonymous>:1:1
+(anonymous) @ VM2480:1
+class add1{
+	constructor(a,b){
+		this.a = a;
+		this.b = b;
+	}
+}
+undefined
+var r = new add1();
+undefined
+typeof r;
+"object"
+r.a
+undefined
+var r = new add1(23,45);
+undefined
+r.a
+23
+r.b;
+45

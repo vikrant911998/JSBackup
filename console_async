@@ -1,0 +1,342 @@
+setTimeout(()=>console.log('time out call'),3000);
+1
+VM2482:1 time out call
+function show(){
+	console.log('function show');
+}
+	
+console.log("start");
+setTimeout(show(),3000);
+console.log('end');
+VM2716:5 start
+VM2716:2 function show
+VM2716:7 end
+undefined
+function show(){
+	console.log('function show');
+}
+	
+console.log("start");
+setTimeout(show,3000);
+console.log('end');
+VM2734:5 start
+VM2734:7 end
+undefined
+VM2734:2 function show
+function show(){
+	console.log('function show');
+}
+	
+console.log("start");
+setTimeout(show,0);
+console.log('end');
+VM2766:5 start
+VM2766:7 end
+undefined
+VM2766:2 function show
+function show(){
+	setTimeout(()=>{
+		console.log('set time out call inside show');
+	},2000);	
+}
+	
+console.log("start");
+show();
+console.log('end');
+VM2905:7 start
+VM2905:9 end
+undefined
+VM2905:3 set time out call inside show
+function show(){
+	setTimeout(()=>{
+		return 45;
+	},2000);	
+}
+	
+console.log("start");
+var t = show();
+console.log('end');
+VM2951:7 start
+VM2951:9 end
+undefined
+t
+undefined
+t
+undefined
+function callback(){
+	console.log('callback function');
+}
+
+
+function show(){
+	setTimeout(callback,2000);	
+}
+	
+console.log("start");
+var t = show();
+console.log('end');
+VM3106:10 start
+VM3106:12 end
+undefined
+VM3106:2 callback function
+function callback(){
+	return 45;
+}
+
+
+function show(){
+	
+	setTimeout(callback,2000);	
+	return callback;	
+}
+	
+console.log("start");
+var t = show();
+console.log('end');
+VM3172:12 start
+VM3172:14 end
+undefined
+t
+ƒ callback(){
+	return 45;
+}
+function callback(){
+	return 45;
+}
+
+
+function show(){
+	
+	setTimeout(callback,2000);	
+		
+}
+	
+console.log("start");
+var t = show();
+console.log('end');
+VM3203:12 start
+VM3203:14 end
+undefined
+t
+undefined
+function callback(){
+	return 45;
+}
+
+
+function show(fn){
+	
+	setTimeout(()=>{
+		console.log('async call');
+		fn();
+	},2000);	
+		
+}
+	
+console.log("start");
+var t = show(callback);
+console.log('end');
+VM3360:15 start
+VM3360:17 end
+undefined
+VM3360:9 async call
+t
+undefined
+function callback(){
+	return 45;
+}
+function show(fn){
+	
+	setTimeout(()=>{
+		console.log('async call');
+		fn();
+	},2000);	
+		
+}	
+console.log("start");
+show(callback);
+console.log('end');
+VM3398:12 start
+VM3398:14 end
+undefined
+VM3398:7 async call
+function callback(){
+	console.log('inside callback');
+}
+
+function show(fn){
+	
+	setTimeout(()=>{
+		console.log('async call');
+		fn();
+	},2000);	
+		
+}	
+
+console.log("start");
+show(callback);
+console.log('end');
+VM3490:14 start
+VM3490:16 end
+undefined
+VM3490:8 async call
+VM3490:2 inside callback
+function callback2(){
+	console.log('inside callback2');
+}
+
+function callback(){
+	console.log('inside callback');
+	setTimeout(()=>{
+		calback2();
+	},3000);
+}
+
+function show(fn){
+	
+	setTimeout(()=>{
+		console.log('async call');
+		fn();
+	},2000);	
+		
+}	
+
+console.log("start");
+show(callback);
+console.log('end');
+VM3684:21 start
+VM3684:23 end
+undefined
+VM3684:15 async call
+VM3684:6 inside callback
+VM3684:8 Uncaught ReferenceError: calback2 is not defined
+    at <anonymous>:8:3
+(anonymous) @ VM3684:8
+setTimeout (async)
+callback @ VM3684:7
+(anonymous) @ VM3684:16
+setTimeout (async)
+show @ VM3684:14
+(anonymous) @ VM3684:22
+
+function show(){
+	
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+		console.log('async call');
+			return 45;
+		},2000);
+	});	
+	return pr;	
+}	
+
+console.log("start");
+var temp = show();
+console.log('end');
+VM3832:13 start
+VM3832:15 end
+undefined
+VM3832:6 async call
+
+function show(){
+	
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+		console.log('async call');
+			return 45;
+		},5000);
+	});	
+	return pr;	
+}	
+
+console.log("start");
+var temp = show();
+console.log('end');
+console.log('promise is ',temp);
+VM3924:13 start
+VM3924:15 end
+VM3924:16 promise is  Promise {<pending>}
+undefined
+VM3924:6 async call
+temp
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "pending"[[PromiseValue]]: undefined
+
+function show(){
+	
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+		console.log('async call');
+			return 45;
+		},5000);
+	});	
+	return pr;	
+}	
+
+console.log("start");
+var temp = show();
+console.log('end');
+console.log('promise is ',temp);
+
+temp.then(data=>console.log('data got')).catch(err=>console.log('error'));
+VM4124:13 start
+VM4124:15 end
+VM4124:16 promise is  Promise {<pending>}
+Promise {<pending>}
+VM4124:6 async call
+temp
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "pending"[[PromiseValue]]: undefined
+t = show();
+console.log("promise is ",t);
+VM4283:2 promise is  Promise {<pending>}
+undefined
+VM4124:6 async call
+t
+Promise {<pending>}
+
+function show(){
+	
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+		console.log('async call');
+			resolve(45);
+		},5000);
+	});	
+	return pr;	
+}	
+
+
+var temp = show();
+
+console.log('promise is ',temp);
+
+temp.then(data=>console.log('data got')).catch(err=>console.log('error'));
+VM4352:16 promise is  Promise {<pending>}
+Promise {<pending>}
+VM4352:6 async call
+VM4352:18 data got
+temp
+Promise {<resolved>: 45}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 45
+
+function show(){
+	
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+		console.log('async call');
+			reject(45);
+		},5000);
+	});	
+	return pr;	
+}	
+
+
+var temp = show();
+
+console.log('promise is ',temp);
+
+temp.then(data=>console.log('data got')).catch(err=>console.log('error'));
+VM4401:16 promise is  Promise {<pending>}
+Promise {<pending>}
+VM4401:6 async call
+VM4401:18 error
+temp
+Promise {<rejected>: 45}__proto__: Promise[[PromiseStatus]]: "rejected"[[PromiseValue]]: 45

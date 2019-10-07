@@ -1,0 +1,135 @@
+function add(){
+	console.log('declaration style');
+}
+undefined
+var add1 = function(){
+	console.log('expression or anonymous style');
+}
+undefined
+var add2 = ()=>{
+	console.log('arrow function');
+}
+undefined
+function add3(a,b){
+	console.log('function constructor style');
+	this.a = a;
+	this.b = b;
+}
+undefined
+add();
+VM761:2 declaration style
+undefined
+add(1,2);
+VM761:2 declaration style
+undefined
+add
+ƒ add(){
+	console.log('declaration style');
+}
+console.dir(add);
+VM1247:1 ƒ add()arguments: nullcaller: nulllength: 0name: "add"prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM761:1[[Scopes]]: Scopes[1]
+undefined
+function add(){
+	console.log('declaration style . '+arguments.length);
+}
+undefined
+add();
+VM1352:2 declaration style . 0
+undefined
+add(1);
+VM1352:2 declaration style . 1
+undefined
+add(1,2,3,4);
+VM1352:2 declaration style . 4
+undefined
+add(1,2,3,4,'virkant',true);
+VM1352:2 declaration style . 6
+undefined
+add1
+ƒ (){
+	console.log('expression or anonymous style');
+}
+var t = add1;
+undefined
+t
+ƒ (){
+	console.log('expression or anonymous style');
+}
+var temp = a=>a**2;
+undefined
+temp(2);
+4
+add3(3,4);
+VM1115:2 function constructor style
+undefined
+add3();
+VM1115:2 function constructor style
+undefined
+var obj = new add3();
+VM1115:2 function constructor style
+undefined
+obj
+add3 {a: undefined, b: undefined}
+var obj1 = new add();
+VM1352:2 declaration style . 0
+undefined
+typeof obj1;
+"object"
+obj1
+add {}
+obj1.a = 56;
+56
+obj1
+add {a: 56}a: 56__proto__: Object
+obj
+add3 {a: undefined, b: undefined}a: undefinedb: undefined__proto__: Object
+function add4(){
+	console.log('function constructor style');
+	constructor(a,b){
+		this.a = a;
+		this.b = b;
+	}
+}
+VM2057:3 Uncaught SyntaxError: Unexpected token '{'
+function add4(){
+	
+	constructor(a,b){
+		this.a = a;
+		this.b = b;
+	}
+}
+VM2063:3 Uncaught SyntaxError: Unexpected token '{'
+function add4(a,b){
+	
+	constructor(){
+		this.a = a;
+		this.b = b;
+	}
+}
+VM2100:3 Uncaught SyntaxError: Unexpected token '{'
+function add4(a,b){
+	
+	constructor{
+		this.a = a;
+		this.b = b;
+	}
+}
+VM2116:3 Uncaught SyntaxError: Unexpected token '{'
+function add4(a,b){
+	
+	constructor(){
+		this.a = a;
+		this.b = b;
+	}
+}
+VM2144:3 Uncaught SyntaxError: Unexpected token '{'
+class add5{
+	constructor(a,b){
+		this.a = a;
+	}
+}
+undefined
+var obj2 = new add5('brain','mentor');
+undefined
+obj2
+add5 {a: "brain"}a: "brain"__proto__: Object

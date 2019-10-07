@@ -1,0 +1,78 @@
+var arr=[12,34,56,78,89,10];
+undefined
+arr.length
+6
+arr.forEach((ele)=>{
+	console.log(ele);
+});
+VM269:2 12
+VM269:2 34
+VM269:2 56
+VM269:2 78
+VM269:2 89
+VM269:2 10
+undefined
+var temp = arr.map((element)=>{
+	return element+1
+});
+undefined
+temp
+(6) [13, 35, 57, 79, 90, 11]
+arr.find((element)=>{
+	return element%2==0
+});
+12
+arr.findIndex((element)=>element == 78 )
+3
+var temp1 = arr.filter((element)=>element<50);
+undefined
+temp1
+(3) [12, 34, 10]
+arr.slice(0);
+(6) [12, 34, 56, 78, 89, 10]
+arr.slice(2);
+(4) [56, 78, 89, 10]
+arr.slice(2,5);
+(3) [56, 78, 89]
+arr;
+(6) [12, 34, 56, 78, 89, 10]
+arr.splice(5);
+[10]
+arr
+(5) [12, 34, 56, 78, 89]
+arr.splice(3,0,400);
+[]
+arr
+(6) [12, 34, 56, 400, 78, 89]
+arr.splice(3,1,100);
+[400]
+arr
+(6) [12, 34, 56, 100, 78, 89]
+arr.splice(3,3,200);
+(3) [100, 78, 89]
+arr
+(4) [12, 34, 56, 200]
+arr.splice(4,1,200,300,400);
+[]
+arr
+(7) [12, 34, 56, 200, 200, 300, 400]
+arr.splice(5);
+(2) [300, 400]
+arr
+(5) [12, 34, 56, 200, 200]
+arr.splice(4);
+[200]
+arr
+(4) [12, 34, 56, 200]
+arr.splice(3,1,900,300,400);
+[200]
+arr
+(6) [12, 34, 56, 900, 300, 400]
+var sum = arr.reduce((acc,curr)=>acc+=curr);
+undefined
+sum
+1702
+var sum = arr.reduce((acc,curr)=>acc+=curr,0);
+undefined
+sum
+1702

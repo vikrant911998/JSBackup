@@ -1,0 +1,121 @@
+function Test(a,b,...args){
+	console.log('value of a is ',a);
+	console.log('value of b is ',b);
+	console.log('args is ',args);
+}
+
+Test(2,3,56,true,'demo');
+
+
+VM363:2 value of a is  2
+VM363:3 value of b is  3
+VM363:4 args is  (3) [56, true, "demo"]0: 561: true2: "demo"length: 3__proto__: Array(0)
+undefined
+var arr = [2,3,4,5,true];
+var m = arr;
+undefined
+m
+(5) [2, 3, 4, 5, true]
+var arr = [2,3,4,5,true];
+var m = [1000,200,...arr];
+undefined
+m
+(7) [1000, 200, 2, 3, 4, 5, true]
+var [t1,t2,t3] = arr;
+console.log(t1);
+console.log(t1);
+VM637:2 2
+VM637:3 2
+undefined
+var [t1,t2,t3] = arr;
+console.log(t1);
+console.log(t2);
+console.log(t3);
+VM668:2 2
+VM668:3 3
+VM668:4 4
+undefined
+var [t1,t2,,,t3] = arr;
+console.log(t1);
+console.log(t2);
+console.log(t3);
+VM673:2 2
+VM673:3 3
+VM673:4 true
+undefined
+var [t1,t2,,,t3,t4] = arr;
+console.log(t1);
+console.log(t2);
+console.log(t3);
+console.log(t4);
+VM696:2 2
+VM696:3 3
+VM696:4 true
+VM696:5 undefined
+undefined
+var [t1,t2,,,t3,t4=34] = arr;
+console.log(t1);
+console.log(t2);
+console.log(t3);
+console.log(t4);
+VM702:2 2
+VM702:3 3
+VM702:4 true
+VM702:5 34
+undefined
+var obj = {
+	name:'vikrant',
+	age:23,
+	address:'rohini'
+};
+
+undefined
+console.log(obj.name+' '+obj.age);
+VM887:1 vikrant 23
+undefined
+var {n,a,add}=obj;
+console.log('Name is ',n);
+VM1012:2 Name is  undefined
+undefined
+var obj = {
+	name:'vikrant',
+	age:23
+};
+
+var {n,a,add}=obj;
+console.log(`${n}`);
+VM1093:7 undefined
+undefined
+var obj = {
+	n:'vikrant',
+	a:23
+};
+
+var {n,a,add}=obj;
+console.log(`${n}`);
+VM1131:7 vikrant
+undefined
+console.log(t1+'sdjfkhks');
+VM1226:1 2sdjfkhks
+undefined
+console.log(`sdklfjsdfkl${t1}`);
+VM1265:1 sdklfjsdfkl2
+undefined
+var obj = {
+	n:'vikrant',
+	a:23
+};
+
+var {n:name,a:age,add}=obj;
+console.log(`${name} ${age}`);
+VM1299:7 vikrant 23
+undefined
+var obj = {
+	n:'vikrant',
+	
+};
+
+var {n:name='brain',a:age=45,add}=obj;
+console.log(`${name} ${age}`);
+VM1314:7 vikrant 45
+undefined

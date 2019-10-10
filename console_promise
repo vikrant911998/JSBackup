@@ -1,0 +1,207 @@
+setTimeout(()=>{console.log('inside settimeout')},3000);
+1
+VM150:1 inside settimeout
+function getData(){
+	console.log('inside get data');
+}
+
+setTimeout(getData,3000);
+2
+VM322:2 inside get data
+function getData(){
+	return 45;
+}
+var temp;
+setTimeout(()=>{
+	temp = getData();
+},3000);
+console.log(temp);
+VM476:8 undefined
+undefined
+function getData(){
+	return 45;
+}
+var temp;
+setTimeout(()=>{
+	temp = getData();
+	console.log(temp);
+},3000);
+
+4
+VM517:7 45
+function fetchData(){
+	return 45;
+}
+
+function getData(){
+	setTimeout(()=>{
+		 return fetchData();
+	},3000);
+	
+}
+
+var t = getData();
+console.log(t);
+
+
+VM725:13 undefined
+undefined
+function fetchData(res){
+	console.log(res);
+}
+
+function getData(){
+	setTimeout(()=>{
+		 fetchData('async');
+	},3000);
+	
+}
+
+getData();
+
+
+undefined
+VM844:2 async
+function f1(res){
+	console.log('result is '+res);
+}
+
+function fetchData(res){
+	setTimeout(()=>{f1(res**2)},3000);
+}
+
+function getData(){
+	setTimeout(()=>{
+		 fetchData(5);
+	},3000);
+	
+}
+
+getData();
+
+
+undefined
+VM1110:2 result is 25
+function Test(){
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			resolve(45);
+		},4000);
+	});
+}
+var t1 = Test();
+t1.then(data=>console.log('data is ',data)).catch(err=>console.log(err));
+VM1536:9 Uncaught TypeError: Cannot read property 'then' of undefined
+    at <anonymous>:9:4
+(anonymous) @ VM1536:9
+function Test(){
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			resolve(45);
+		},4000);
+	});
+	return pr;
+}
+var t1 = Test();
+t1.then(data=>console.log('data is ',data)).catch(err=>console.log(err));
+Promise {<pending>}
+VM1552:10 data is  45
+function Test(){
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			reject(0);
+		},4000);
+	});
+	return pr;
+}
+var t1 = Test();
+t1.then(data=>console.log('data is ',data)).catch(err=>console.log(err));
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: undefined
+VM1574:10 0
+function Test(){
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			reject(67);
+		},4000);
+	});
+	return pr;
+}
+var t1 = Test();
+t1.then(data=>console.log('data is ',data)).catch(err=>console.log(err));
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: undefined
+VM1586:10 67
+Promise.all([Test(),Test(),Test()]).then(d=>console.log('d is ',d)).catch(e=>console.log(e));
+Promise {<pending>}
+VM1816:1 67
+function sq(num){
+	var pr = new Promise(()=>{
+		
+	});
+	
+	return pr;
+}
+undefined
+function sq(num){
+	var pr = new Promise((res,rej)=>{
+		setTimeout(()=>{
+
+			if(num == 5){
+				rej(500);
+			}
+			res(num**2);
+		},3000);
+		
+	});
+	return pr;
+}
+
+Promise.all([sq(2),sq(3),sq(4)]).then(data=>console.log('result array is ',data)).catch(err=>console.log(err+' internal server error'));
+Promise {<pending>}
+VM2392:15 result array is  (3) [4, 9, 16]0: 41: 92: 16length: 3__proto__: Array(0)
+function sq(num){
+	var pr = new Promise((res,rej)=>{
+		setTimeout(()=>{
+
+			if(num == 5){
+				rej(500);
+			}
+			res(num**2);
+		},3000);
+		
+	});
+	return pr;
+}
+
+Promise.all([sq(2),sq(5),sq(4)]).then(data=>console.log('result array is ',data)).catch(err=>console.log(err+' internal server error'));
+Promise {<pending>}
+VM2407:15 500 internal server error
+async function Test(){
+	return 1000;
+}
+t = Test();
+console.log(t);
+VM2592:5 Promise {<resolved>: 1000}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: 1000
+undefined
+async function sq(num){
+	var pr = new Promise((res,rej)=>{
+		setTimeout(()=>{
+
+			if(num == 5){
+				rej(500);
+			}
+			res(num**2);
+		},3000);
+		
+	});
+	return pr;
+}
+var m1 = await sq(3);
+console.log('m1 value is '+m1);
+var m2 = await sq(m1);
+console.log('m2 value is '+m2);
+var m3 = await sq(m2);
+console.log('m3 value is '+m3);
+VM3145:15 m1 value is 9
+VM3145:17 m2 value is 81
+VM3145:19 m3 value is 6561
+undefined

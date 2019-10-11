@@ -1,0 +1,364 @@
+var name = 'cloud';
+
+var obj = {
+	name:'brain-mentors',
+	getName:function(){
+		console.log(this);
+	}
+};
+
+obj.getName();
+VM434:6 {name: "brain-mentors", getName: ƒ}
+undefined
+var name = 'cloud';
+
+var obj = {
+	name:'brain-mentors',
+	getName:function(){
+		console.log(this.name);
+	}
+};
+
+obj.getName();
+VM462:6 brain-mentors
+undefined
+var name = 'cloud';
+function get(){
+	name = 'brain';
+	console.log(this.name);
+}
+
+get();
+VM622:4 brain
+undefined
+var name = 'cloud';
+function get(){
+	var name = 'brain';
+	console.log(this.name);
+}
+
+get();
+VM630:4 cloud
+undefined
+temp;
+VM646:1 Uncaught ReferenceError: temp is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM646:1
+temp = 45;
+45
+function student(name){
+	this.name = name;
+}
+
+var s1 = new student('vikrant');
+undefined
+s1
+student {name: "vikrant"}
+obj
+{name: "brain-mentors", getName: ƒ}
+obj={
+	name:'brain',
+	function getName(){
+		console.log(this);	
+	}
+};
+
+obj.getName();
+VM959:3 Uncaught SyntaxError: Unexpected identifier
+obj={
+	name:'brain',
+	getName(){
+		console.log(this);	
+	}
+};
+
+obj.getName();
+VM975:4 {name: "brain", getName: ƒ}getName: ƒ getName()name: "brain"__proto__: Object
+undefined
+getName();
+VM1001:1 Uncaught ReferenceError: getName is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM1001:1
+window.name
+"cloud"
+function foo(){
+	console.log(this.a);
+}
+
+a =45;
+foo();
+VM1157:2 45
+undefined
+function foo(){
+	"use strict";
+	
+	console.log(this.a);
+}
+
+a =45;
+foo();
+VM1176:4 Uncaught TypeError: Cannot read property 'a' of undefined
+    at foo (<anonymous>:4:19)
+    at <anonymous>:8:1
+foo @ VM1176:4
+(anonymous) @ VM1176:8
+function foo() {
+ console.log( this.a );
+}
+
+var obj = {
+ a: 2,
+ foo: foo
+};
+var bar = obj.foo; 
+
+var a = "oops, global"; 
+obj.foo();
+bar(); 
+VM1215:2 2
+VM1215:2 oops, global
+undefined
+function foo() {
+ console.log( this.a );
+}
+
+function doFoo(fn) {
+ fn(); 
+}
+
+var obj = {
+ a: 2,
+ foo: foo
+};
+
+var a = "oops, global"; 
+
+doFoo( obj.foo ); 
+VM1262:2 oops, global
+undefined
+function foo() {
+ console.log( this.a );
+}
+
+var obj = {
+ a: 2,
+ foo: foo
+};
+
+var a = "oops, global"; 
+
+setTimeout( obj.foo, 100 ); 
+1
+VM1278:2 oops, global
+function foo() {
+ console.log( this.a );
+}
+
+var obj = {
+ a: 2,
+ foo: function (){
+		console.log(this.a);
+	}
+};
+
+var a = "oops, global"; 
+
+setTimeout( obj.foo, 100 ); 
+2
+VM1343:8 oops, global
+console.dir(foo);
+VM1398:1 ƒ foo()arguments: nullcaller: nulllength: 0name: "foo"prototype: {constructor: ƒ}constructor: ƒ foo()__proto__: Object__proto__: ƒ ()apply: ƒ apply()arguments: (...)bind: ƒ bind()call: ƒ call()caller: (...)constructor: ƒ Function()length: 0name: ""toString: ƒ toString()Symbol(Symbol.hasInstance): ƒ [Symbol.hasInstance]()get arguments: ƒ ()set arguments: ƒ ()get caller: ƒ ()set caller: ƒ ()__proto__: Object[[FunctionLocation]]: <unknown>[[Scopes]]: Scopes[0][[FunctionLocation]]: VM1343:1[[Scopes]]: Scopes[1]
+undefined
+foo instanceof Object;
+true
+foo instanceof Function;
+true
+function foo() {
+ console.log( this.a );
+}
+
+var obj = {
+ a: 2
+};
+a = 'brian';
+
+foo.call( obj ); 
+VM1522:2 2
+undefined
+function foo(temp) {
+ console.log( this.a +" and "+temp);
+}
+
+var obj = {
+ a: 2
+};
+var obj1={a:45};
+a = 'brian';
+
+foo.call( obj1 ,'abc'); 
+VM1603:2 45 and abc
+undefined
+function foo(temp) {
+ console.log( this.a +" and "+temp);
+}
+
+var obj = {
+ a: 2
+};
+var obj1={a:45};
+a = 'brian';
+
+foo.apply(obj1 ,['abc']); 
+VM1664:2 45 and abc
+undefined
+function foo(temp) {
+ console.log( this.a +" and "+temp);
+}
+
+var obj = {
+ a: 2
+};
+var obj1={a:45};
+a = 'brian';
+
+foo.apply(obj1 ,['abc','cloud']); 
+VM1693:2 45 and abc
+undefined
+function foo(temp,temp1) {
+ console.log( this.a +" and "+temp+" and "+temp1);
+}
+
+var obj = {
+ a: 2
+};
+var obj1={a:45};
+a = 'brian';
+
+foo.apply(obj1 ,['abc','cloud']); 
+VM1755:2 45 and abc and cloud
+undefined
+function foo(temp,temp1) {
+ console.log( this.a +" and "+temp+" and "+temp1);
+}
+
+var obj = {
+ a: 2
+};
+var obj1={a:45};
+a = 'brian';
+//foo('bac','cloud')
+foo.apply(obj1 ,['abc','cloud']); 
+VM1787:2 45 and abc and cloud
+undefined
+function foo(temp,temp1) {
+ console.log( this.a +" and "+temp+" and "+temp1);
+}
+
+var obj = {
+ a: 2
+};
+var obj1={a:45};
+a = 'brian';
+
+foo.call( obj1 ,'abc','cloud'); 
+VM1839:2 45 and abc and cloud
+undefined
+function foo() {
+ console.log( this.a );
+}
+var obj = {
+ a: 2
+};
+var bar = function() {
+ foo.call( obj );
+
+};
+bar(); // 2
+setTimeout( bar, 100 ); 
+VM1844:2 2
+3
+VM1844:2 2
+function foo() {
+ console.log( this.a );
+}
+
+var obj = {
+ a: 2
+};
+
+var bar = function() {
+ foo.call( obj );
+
+};
+
+bar(); // 2
+setTimeout( bar, 100 ); 
+VM1851:2 2
+4
+VM1851:2 2
+temp
+45
+function foo(something) {
+ console.log( this.a, something );
+ return this.a + something;
+}
+var obj = {
+ a: 2
+};
+var obj1={a:45};
+
+var bar = foo.bind( obj );
+
+var bar1 = foo.bind(obj1);
+
+var b = bar( 3 ); 
+
+var b1 = bar1(100);
+
+console.log( b+" and "+b1 );
+VM2120:2 2 3
+VM2120:2 45 100
+VM2120:18 5 and 145
+undefined
+function Test(arg1,arg2){
+	console.log(this.a +" and "+arg1+" and "+arg2);
+}
+
+var obj={a:100};
+var obj1 = {a:200};
+var obj2={a:300};
+
+Test.call(obj,'call','function');
+
+Test.apply(obj1,['apply','function']);
+
+var Temp = Test.bind(obj2);
+Temp('bind','function');
+
+VM2603:2 100 and call and function
+VM2603:2 200 and apply and function
+VM2603:2 300 and bind and function
+undefined
+function Test(arg,arg1){
+	console.log(arg+"******"+arg1);
+	for(let i=0;i<arguments.length;i++){
+		console.log(arguments[i]);
+	}
+}
+
+Test(100);
+
+VM2920:2 100******undefined
+VM2920:4 100
+undefined
+var obj={
+	a:45,
+	getA:()=>{
+		console.log(this.a);
+	}
+}
+obj.getA();
+VM3076:4 brian
+undefined
+a
+"brian"

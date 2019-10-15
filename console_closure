@@ -1,0 +1,137 @@
+function closure(){
+	var a=13;
+	function add(){
+		console.log(a);
+	}
+
+	return add;
+}
+
+var temp = closure();
+undefined
+temp
+ƒ add(){
+		console.log(a);
+	}
+temp();
+VM346:4 13
+undefined
+var a =12;
+function Test(){
+	console.log(a);
+}
+
+undefined
+var temp1 = Test;
+undefined
+temp1();
+VM455:3 12
+undefined
+//IIFE Immediate invoked function expression
+(function (){
+	console.log('I am IIFE');
+})();
+VM649:3 I am IIFE
+undefined
+//IIFE Immediate invoked function expression
+(function temp1(){
+	console.log('I am IIFE');
+})();
+VM658:3 I am IIFE
+undefined
+//IIFE Immediate invoked function expression
+(function temp1(a){
+	console.log('I am IIFE with value ',a);
+})();
+VM698:3 I am IIFE with value  undefined
+undefined
+//IIFE Immediate invoked function expression
+(function temp1(a){
+	console.log('I am IIFE with value ',a);
+})(65);
+VM716:3 I am IIFE with value  65
+undefined
+function closure(){
+	var a=13;
+	function add(){
+		console.log(this.a);
+	}
+
+	return add;
+}
+
+var temp = closure();
+undefined
+a=240;
+temp();
+VM751:4 240
+undefined
+window.a
+240
+function foo(){
+	console.log(arguments.length);
+};
+
+undefined
+foo();
+VM962:2 0
+undefined
+foo(1,2);
+VM962:2 2
+undefined
+function foo(a,b){
+	console.log(arguments);
+	console.log("arguments are ",a,b);
+}
+
+undefined
+foo(2,3);
+VM1121:2 Arguments(2) [2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]0: 21: 3callee: ƒ foo(a,b)length: 2Symbol(Symbol.iterator): ƒ values()__proto__: Object
+VM1121:3 arguments are  2 3
+undefined
+foo(2,3,'vikrant',true);
+VM1121:2 Arguments(4) [2, 3, "vikrant", true, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+VM1121:3 arguments are  2 3
+undefined
+function foo(a,b,...rest){
+	console.log(arguments);
+	console.log("arguments are ",a,b);
+}
+
+undefined
+foo(2,3,'vikrant',true);
+VM1221:2 Arguments(4) [2, 3, "vikrant", true, callee: (...), Symbol(Symbol.iterator): ƒ]
+VM1221:3 arguments are  2 3
+undefined
+function foo(a,b,...rest){
+	console.log(arguments);
+	console.log("arguments are ",a,b);\
+}
+
+VM1236:3 Uncaught SyntaxError: Invalid or unexpected token
+function foo(a,b,...rest){
+	console.log(arguments);
+	console.log("arguments are ",a,b);
+	console.log('Rest values are ',rest);
+}
+
+undefined
+foo(2,3,'vikrant',true);
+VM1353:2 Arguments(4) [2, 3, "vikrant", true, callee: (...), Symbol(Symbol.iterator): ƒ]
+VM1353:3 arguments are  2 3
+VM1353:4 Rest values are  (2) ["vikrant", true]
+undefined
+var arr=[1,2,3,4,10];
+undefined
+var a = [34,51,...arr];
+undefined
+a
+(7) [34, 51, 1, 2, 3, 4, 10]
+var a = [34,51,...arr,67,100];
+undefined
+a
+(9) [34, 51, 1, 2, 3, 4, 10, 67, 100]
+t = arr;
+(5) [1, 2, 3, 4, 10]
+t
+(5) [1, 2, 3, 4, 10]

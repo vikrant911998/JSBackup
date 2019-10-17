@@ -1,0 +1,85 @@
+var temp =10;
+function Test(){
+	var temp = 15;
+	console.log(temp);
+}
+Test();
+
+VM221:4 15
+undefined
+var temp =10;
+function Test(){
+	
+	console.log(temp);
+}
+Test();
+
+VM226:4 10
+undefined
+console.log(a);
+
+var a = 10;
+VM302:1 undefined
+undefined
+console.log(a);
+
+a = 10;
+VM313:1 10
+10
+console.log(b);
+
+b = 10;
+VM334:1 Uncaught ReferenceError: b is not defined
+    at <anonymous>:1:13
+(anonymous) @ VM334:1
+function Test(){
+	console.log(x);
+	var x = 10;
+}
+Test();
+VM452:2 undefined
+undefined
+function Test(){
+	console.log(y);
+	let y = 10;
+}
+Test();
+VM484:2 Uncaught ReferenceError: Cannot access 'y' before initialization
+    at Test (<anonymous>:2:14)
+    at <anonymous>:5:1
+Test @ VM484:2
+(anonymous) @ VM484:5
+function Test(){
+	var temp = 100;
+	function t(){
+		console.log(temp);
+	}
+	return t;
+}
+var result = Test();
+undefined
+result
+ƒ t(){
+		console.log(temp);
+	}
+result();
+VM657:4 100
+undefined
+for(var i=1;i<=5;i++){
+	setTimeout(()=>console.log(i),2000);
+}
+5
+VM873:2 6
+VM873:2 6
+VM873:2 6
+VM873:2 6
+VM873:2 6
+for(let j=1;j<=5;j++){
+	setTimeout(()=>console.log(j),2000);
+}
+10
+VM980:2 1
+VM980:2 2
+VM980:2 3
+VM980:2 4
+VM980:2 5

@@ -1,0 +1,125 @@
+function Test(){
+	console.log('Inside Test Function');
+	setTimeout(()=>{
+		console.log('inside setimeout');
+	},2000);
+}
+undefined
+Test();
+VM298:2 Inside Test Function
+undefined
+VM298:4 inside setimeout
+function Test(){
+	console.log('Inside Test Function');
+	setTimeout(()=>{
+		console.log('inside setimeout');
+		return 1000;
+	},2000);
+}
+undefined
+var temp = Test();
+VM361:2 Inside Test Function
+undefined
+VM361:4 inside setimeout
+temp
+undefined
+function callback(result){
+	console.log('Result is ',result);
+}
+
+function Test(fn){
+	console.log('Inside Test Function');
+	setTimeout(()=>{
+		console.log('inside setimeout');
+		fn(1000);
+	},2000);
+}
+
+Test(callback);
+VM884:6 Inside Test Function
+undefined
+VM884:8 inside setimeout
+VM884:2 Result is  1000
+
+
+function Test(){
+	console.log('Inside Test Function');
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			console.log('inside setimeout');
+			resolve(1000);
+		},2000);
+	});
+}
+
+var promise = Test();
+promise.then(data=>console.log(data)).catch(err=>console.log(err));
+
+
+VM1350:4 Inside Test Function
+VM1350:14 Uncaught TypeError: Cannot read property 'then' of undefined
+    at <anonymous>:14:9
+(anonymous) @ VM1350:14
+VM1350:7 inside setimeout
+
+
+function Test(){
+	console.log('Inside Test Function');
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			console.log('inside setimeout');
+			resolve(1000);
+		},2000);
+	});
+	return pr;
+}
+
+var promise = Test();
+promise.then(data=>console.log(data)).catch(err=>console.log(err));
+
+
+VM1400:4 Inside Test Function
+Promise {<pending>}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: undefined
+VM1400:7 inside setimeout
+VM1400:15 1000
+p1 = Test();
+p1 = Test();
+p1 = Test();
+VM1400:4 Inside Test Function
+VM1400:4 Inside Test Function
+VM1400:4 Inside Test Function
+Promise {<pending>}
+VM1400:7 inside setimeout
+VM1400:7 inside setimeout
+VM1400:7 inside setimeout
+
+
+function Test(num){
+	console.log('Inside Test Function');
+	var pr = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			console.log('inside setimeout');
+			if(num !=2)
+				resolve(1000);
+			else
+				reject(404);
+		},2000);
+	});
+	return pr;
+}
+
+
+
+
+undefined
+
+
+Promise.all([Test(3),Test(4),Test(5)]).then(arr=>console.log(arr)).catch();
+VM1913:4 Inside Test Function
+VM1913:4 Inside Test Function
+VM1913:4 Inside Test Function
+Promise {<pending>}
+VM1913:7 inside setimeout
+VM1913:7 inside setimeout
+VM1913:7 inside setimeout
+VM2433:3 (3) [1000, 1000, 1000]
